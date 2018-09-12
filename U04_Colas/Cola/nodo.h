@@ -1,7 +1,3 @@
-
-//
-// Created by alumno on 05/09/18.
-//
 //set-> para setear
 //get-> para mostar
 #ifndef PROGRAMACION3_nodo_H
@@ -17,14 +13,15 @@ private:
 
     nodo *next;
 
+
 public:
-    nodo (T dato){//constructor
+    nodo(T d) {
         dato = d;
-        next= nullprt;
+        next = nullptr;
     }
-    nodo (T dato){//constructor
+    nodo(T d, nodo *n) {
         dato = d;
-        next= n;
+        next = n;
     }
 
     T getDato() const {
