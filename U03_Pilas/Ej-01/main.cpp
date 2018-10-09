@@ -11,7 +11,6 @@ int main() {
     int n;
     Pila <char> palabra;
     cout << "Ejercicio 03/01\n" << endl;
-    cout << "Ingrese cantidad de caracteres" << endl;
     cout << "ingrese letras" << endl;
     cin>>n;
     char a;

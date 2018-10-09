@@ -1,19 +1,11 @@
-//set-> para setear
-//get-> para mostar
-#ifndef PROGRAMACION3_nodo_H
-#define PROGRAMACION3_nodo_H
+#ifndef PROGRAMACION3_NODO_H
+#define PROGRAMACION3_NODO_H
 
-template <class T>
-
+template<class T>
 class nodo {
-
 private:
-
     T dato;
-
     nodo *next;
-
-
 public:
     nodo(T d) {
         dato = d;
@@ -24,24 +16,26 @@ public:
         next = n;
     }
 
-    T getDato() const {
+    T getDato() {
         return dato;
     }
 
-    void setDato(T dato) {
-        nodo::dato = dato;
+    /**
+     *
+     * @param d
+     */
+    void setDato(T d) {
+        dato = d;
     }
 
-    nodo *getNext() const {
+    nodo *getNext() {
         return next;
     }
 
-    void setNext(nodo *next) {
-        nodo::next = next;
+    void setNext(nodo *n) {
+        next = n;
     }
-
 };
 
 
-
-#endif //PROGRAMACION3_nodo_H
+#endif //PROGRAMACION3_NODO_H

@@ -1,7 +1,11 @@
 #ifndef LISTA_H
 #define LISTA_H
 
-#include "nodo.h"
+#include <list>
+
+#include "Nodo.h"
+
+using namespace std;
 
 /**
  * Clase que implementa una Lista Enlasada generica, ya que puede
@@ -9,15 +13,10 @@
  * @tparam T cualquier tipo de dato
  */
 template<class T>
-
 class Lista {
-
 private:
-
     nodo<T> *inicio;
-
 public:
-
     Lista();
 
     Lista(const Lista<T> &li);
@@ -34,6 +33,8 @@ public:
 
     void insertarUltimo(T dato);
 
+    void moverPrimero ( unsigned int pos);
+
     void remover(unsigned int pos);
 
     T getDato(int pos);
@@ -41,6 +42,7 @@ public:
     void reemplazar(int pos, T dato);
 
     void vaciar();
+
 };
 
 
@@ -172,6 +174,39 @@ void Lista<T>::insertarUltimo(T dato) {
     aux->setNext(nuevo);
 }
 
+/**
+ * Mueve el nodo de la primera posicion, a la posicion N
+ * @tparam T
+ * @param pos posicion del nodo a mover
+ */
+template<class T>
+void Lista<T>::moverPrimero(unsigned int pos) {
+
+    auto *nuevo = new nodo<T>();
+    nodo<T> *aux = inicio;
+    int pos_actual = 0;
+
+    nuevo->setDato(inicio);
+
+    if (pos == 0) {
+        nuevo->setNext(inicio);
+        inicio = nuevo;
+        return;
+    }
+
+    while (pos_actual < pos - 1 && aux != nullptr) {
+        pos_actual++;
+        aux = aux->getNext();
+    }
+
+    if (aux == nullptr)
+        throw 1;
+
+    nuevo->setNext(aux->getNext());
+    aux->setNext(nuevo);
+
+    delete inicio;
+}
 
 /**
  * Elimina el nodo en la posicion 'pos' de la lista enlasada
@@ -256,5 +291,14 @@ void Lista<T>::reemplazar(int pos, T dato) {
 template<class T>
 void Lista<T>::vaciar() {}
 
+template<class T>
+ostream& operator<<(ostream& os, Lista<T>& ver) {
+    for(int i = 0; i < ver.getTamanio(); i++) {
+        os << ver.getDato(i);
+        if(i != ver.getTamanio()-1)
+            os << " -> ";
+    }
+    return os;
+}
 
 #endif //LISTA_H

@@ -1,6 +1,6 @@
-#ifndef LISTA_H
-#define LISTA_H
-#include "/home/alumno/ejercicios-2018-SantiagoMerlo/U02_Listas/Lista/Lista.h"
+#ifndef PILA_H
+#define PILA_H
+#include "C:\Users\usuario\Desktop\facultad\Programacion 3\ejercicios-2018-SantiagoMerlo\U02_Listas\Lista\Lista.h"
 #include "../../U02_Listas/Lista/nodo.h"
 
 /**
@@ -78,4 +78,4 @@ bool Pila<T>::esVacia() { //Responde si la pila se encuentra Vacía
 
 }
 
-#endif //LISTA_H
+#endif //PILA_H
