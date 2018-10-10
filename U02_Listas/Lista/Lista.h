@@ -33,7 +33,9 @@ public:
 
     void insertarUltimo(T dato);
 
-    void moverPrimero ( unsigned int pos);
+    void moverPrimero (  int pos);
+
+    void mover( int pos, int nueva_pos);
 
     void remover(unsigned int pos);
 
@@ -180,13 +182,13 @@ void Lista<T>::insertarUltimo(T dato) {
  * @param pos posicion del nodo a mover
  */
 template<class T>
-void Lista<T>::moverPrimero(unsigned int pos) {
+void Lista<T>::moverPrimero(int pos) {
 
     auto *nuevo = new nodo<T>();
     nodo<T> *aux = inicio;
     int pos_actual = 0;
 
-    nuevo->setDato(inicio);
+    nuevo->setDato(aux->getDato());
 
     if (pos == 0) {
         nuevo->setNext(inicio);
@@ -205,7 +207,16 @@ void Lista<T>::moverPrimero(unsigned int pos) {
     nuevo->setNext(aux->getNext());
     aux->setNext(nuevo);
 
-    delete inicio;
+    remover(0); //remuevo el primer elemento pq ya movi su dato a la posicion n
+}
+template<class T>
+void Lista<T>::mover( int pos, int nueva_pos){
+    auto *nuevo = new nodo<T>();
+
+    insertar(nueva_pos,getDato(pos));
+    remover(pos);
+
+
 }
 
 /**

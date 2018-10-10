@@ -6,19 +6,26 @@
 #include "C:\Users\usuario\Desktop\facultad\Programacion 3\ejercicios-2018-SantiagoMerlo\U03_Pilas\Pila\Pila.h"
 
 using namespace std;
+/**
+void invertir( Cola<int> cola){
 
+    for (int i=0;i<n)
 
+}
+**/
 int main()
 {
-    Lista <int> lista;
-    lista.insertarUltimo(3);
-    lista.insertarUltimo(4);
-    lista.insertarUltimo(7);
-    lista.insertarUltimo(5);
-    cout<<lista;
-    lista.moverPrimero(3);
-    cout<<lista;
-
+    Cola <int> *cola = new Cola<int> ();
+    cola->encolar(1);
+    cola->encolar(2);
+    cola->encolar(3);
+    cola->encolar(4);
+    cola->getTamanio();
+   // invertir(cola);
+    while (!cola->esVacia())
+    {
+        cout<<cola->desencolar()<<endl;
+    }
     system("pause");
     return 0;
 }

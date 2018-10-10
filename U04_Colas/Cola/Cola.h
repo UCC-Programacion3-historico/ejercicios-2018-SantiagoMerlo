@@ -10,19 +10,20 @@
  */
 template<class T>
 class Cola {
-
 private:
-
     nodo<T> *entrada;
     nodo<T> *salida;
-
 public:
-
     Cola();
+
     ~Cola();
+
     void encolar(T dato);
+
+    int getTamanio();
+
     T desencolar();
-    T mostrar();
+
     bool esVacia();
 };
 
@@ -37,6 +38,7 @@ Cola<T>::Cola() {
     salida = nullptr;
 }
 
+
 /**
  * Destructor de la clase Cola, se encarga de liberar la memoria de todos los nodos
  * utilizados en la Cola
@@ -45,22 +47,34 @@ Cola<T>::Cola() {
 template<class T>
 Cola<T>::~Cola() {}
 
+
 /**
  * Inserta un dato en la Cola
  * @tparam T
  * @param dato  dato a insertar
  */
+
 template<class T>
 void Cola<T>::encolar(T dato) {
     auto *nuevo = new nodo<T>(dato, nullptr);
-    if (entrada != nullptr)
-    {
-        entrada->setNext(nuevo);//entrada es el nuevo nodo;
-    }
-    else //en el caso de que sea el primero (nodobefore=0), el nodo va a ser entrada y salida;
+    if(entrada != nullptr)
+        entrada->setNext(nuevo);
+    else
         salida = nuevo;
+    entrada = nuevo;
+}
 
-    entrada = nuevo; //Etiqueta el nuevo nodo;
+template<class T>
+int Cola<T>::getTamanio() {
+
+    int cant = 0;
+    nodo<T> *aux = entrada;
+
+    while (aux != nullptr) {
+        cant++;
+        aux = aux->getNext();
+    }
+    return cant;
 }
 
 
@@ -70,35 +84,21 @@ void Cola<T>::encolar(T dato) {
  * @return dato almacenado en el nodo
  */
 template<class T>
-T Cola<T>::desencolar() {//sacar cosas
-
+T Cola<T>::desencolar() {
     if (salida == nullptr)
-        throw 1; //excepcion
+        throw 1;
 
     T dato = salida->getDato();
-    nodo <T> *salida_anteriro = salida;
+    nodo<T> *salida_anterior = salida;
     salida = salida->getNext();
 
-    if (salida == nullptr);
+    if (salida == nullptr)
         entrada = nullptr;
 
-    delete salida_anteriro;
+    delete salida_anterior;
     return dato;
 }
 
-/**
- * Muestra los valores de la lista
- * @tparam T
- * @return el valor de la salida
- */
-template<class T>
-T Cola<T>::mostrar() {//sacar cosas
-    if (salida == nullptr)
-        throw 1; //excepcion
-        //or cout<<"no hay valores"<<endl;
-    T dato = salida->getDato();
-    return dato;
-}
 /**
  * Responde si la Cola se encuentra Vacía
  * @tparam T
@@ -106,14 +106,7 @@ T Cola<T>::mostrar() {//sacar cosas
  */
 template<class T>
 bool Cola<T>::esVacia() {
-    return salida == nullptr;
-   /*
-   simplifica esta funcion;
-   if (salida == nullptr)
-       return true;
-   else
-       return false;
-     */
+    return (salida == nullptr);
 }
 
 #endif //LISTA_H
