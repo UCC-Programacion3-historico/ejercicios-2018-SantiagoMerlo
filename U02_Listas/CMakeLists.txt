@@ -10,7 +10,7 @@ add_executable(U02-E03 ${SOURCE_FILES_03})
 set(SOURCE_FILES_04 Ej-04/main.cpp Ej-04/union.h)
 add_executable(U02-E04 ${SOURCE_FILES_04})
 
-set(SOURCE_FILES_05 Ej-05/main.cpp Ej-05/CircList.h)
+set(SOURCE_FILES_05 Ej-05/main.cpp Ej-05/CircList.h Ej-05/nodo.h)
 add_executable(U02-E05 ${SOURCE_FILES_05})
 
 set(SOURCE_FILES_06 Ej-06/main.cpp)

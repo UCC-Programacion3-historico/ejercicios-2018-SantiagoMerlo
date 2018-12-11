@@ -1,6 +1,6 @@
 #ifndef PILA_H
 #define PILA_H
-#include "C:\Users\usuario\Desktop\facultad\Programacion 3\ejercicios-2018-SantiagoMerlo\U02_Listas\Lista\Lista.h"
+#include "../../U02_Listas\Lista\Lista.h"
 #include "../../U02_Listas/Lista/nodo.h"
 
 /**

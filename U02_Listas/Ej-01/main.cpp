@@ -17,7 +17,6 @@ int main() {
         A->insertarUltimo(a);
     }
 
-
     fnInvierte(A);
 
     for (int j = 0; j < n ; ++j) {

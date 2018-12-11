@@ -43,6 +43,8 @@ public:
 
     void reemplazar(int pos, T dato);
 
+    void insertAfter2(T oldValue, int n, T newValue);
+
     void vaciar();
 
 };
@@ -301,6 +303,27 @@ void Lista<T>::reemplazar(int pos, T dato) {
  */
 template<class T>
 void Lista<T>::vaciar() {}
+
+template<class T>
+void Lista<T>::insertAfter2(T oldValue, int n, T newValue) { //insertar valor cuando ocurra tantas veces tal cosa
+    auto *nuevo = new nodo<T>();
+    nuevo->setDato(newValue);
+    nodo<T> *aux = inicio;
+    unsigned int ocur = 0;
+
+    while(aux != nullptr) {
+        if(aux->getDato() == oldValue)
+            ocur++;
+        if(ocur == n) {
+            nuevo->setNext(aux->getNext());
+            aux->setNext(nuevo);
+            return;
+        }
+        aux = aux->getNext();
+    }
+}
+
+
 
 template<class T>
 ostream& operator<<(ostream& os, Lista<T>& ver) {
